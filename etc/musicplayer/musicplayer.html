@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Music Player - Unchun Yang's Website</title>
+
+    <meta name="description" content="Music Player - Unchun Yang's Website" />
+    <link rel="canonical" href="https://ucyang.com/etc/musicplayer/musicplayer.html" />
+
+    <meta property="og:title" content="Music Player - Unchun Yang's Website" />
+    <meta property="og:description" content="Music Player - Unchun Yang's Website" />
+    <meta property="og:url" content="https://ucyang.com/etc/musicplayer/musicplayer.html" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:height" content="268" />
+    <meta property="og:image:width" content="512" />
+
+    <meta name="theme-color" content="#dff6ff" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+
+    <style>
+      div#jumbo {
+        color: #084670;
+        background: #dff6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="jumbo" class="jumbotron text-center">
+        <h1>Music Player</h1>
+        <hr />
+        <p>
+          <a href="https://ucyang.com/">Unchun Yang's Website (https://ucyang.com/)</a>
+          <br />
+          <a href="mailto:ucyang@ucyang.com">ucyang@ucyang.com</a>
+          <br />
+          by Unchun Yang
+        </p>
+      </div>
+  
+      <div id="info-mobile" class="alert alert-warning fade in" style="display: none">
+        <a class="close" href="#" data-dismiss="alert" aria-label="close">&times;</a>
+        <p style="text-align: center"><strong>모바일은 지원하지 않습니다.</strong></p>
+      </div>
+  
+      <div id="info-shortcuts" class="alert alert-info" style="text-align: center">
+        <strong>단축키</strong>
+        <hr />
+        <p><b>Space</b> - 재생 / 정지</p>
+        <p><span class="glyphicon glyphicon-arrow-left"></span> - 이전 곡</p>
+        <p><span class="glyphicon glyphicon-arrow-right"></span> - 다음 곡</p>
+        <p><span class="glyphicon glyphicon-arrow-up"></span> - 음량 높이기</p>
+        <p><span class="glyphicon glyphicon-arrow-down"></span> - 음량 낮추기</p>
+        <p><b>R</b> - 반복 재생</p>
+        <p><b>S</b> - 재생 순서 변경</p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <script src="script.min.js"></script>
+
+    <!-- SCM Music Player https://www.scmplayer.net -->
+    <script src="https://www.scmplayer.net/script.js"
+      data-config="{'skin':'skins/simpleBlue/skin.css','volume':100,
+      'autoplay':true,'shuffle':true,'repeat':1,'placement':'bottom',
+      'showplaylist':true,'playlist':[
+      {'title':'5mg - Coffee House','url':'https://youtu.be/LhkkCkBU-8s'},
+      {'title':'5mg - Cottage Piano','url':'https://youtu.be/YkswOl3KH6o'},
+      {'title':'a_hisa - Anhedonia','url':'https://youtu.be/Fh293AC19yY'},
+      {'title':'a_hisa - anxiety','url':'https://youtu.be/FpB5LYZLMAE'},
+      {'title':'a_hisa - Azure Sky','url':'https://youtu.be/sp79-QQa8-o'},
+      {'title':'a_hisa - Bloomin\' Lights','url':'https://youtu.be/d7hEVUYJd6w'},
+      {'title':'a_hisa - Blue Fountain','url':'https://youtu.be/8yR-oMPqQNU'},
+      {'title':'a_hisa - Breeze of Life','url':'https://youtu.be/xjBu-pMjCO4'},
+      {'title':'a_hisa - Float','url':'https://youtu.be/EgZ18c_p7SM'},
+      {'title':'a_hisa - floral','url':'https://youtu.be/xwMpkByMNEg'},
+      {'title':'a_hisa - Leave It Alone','url':'https://youtu.be/lKQG8JwmDvI'},
+      {'title':'a_hisa - Little Lake','url':'https://youtu.be/T6_Y-Zd-8x4'},
+      {'title':'a_hisa - Moon Rabbit','url':'https://youtu.be/uPYNsGXbuzY'},
+      {'title':'a_hisa - Pastel Subliminal','url':'https://youtu.be/E0yLCpFQMBk'},
+      {'title':'a_hisa - prejudice','url':'https://youtu.be/yzA4u_QrZWg'},
+      {'title':'a_hisa - Rainy Waltz','url':'https://youtu.be/IOz7xI7mofw'},
+      {'title':'a_hisa - Ruin','url':'https://youtu.be/1nJmrHER_R4'},
+      {'title':'a_hisa - Silent Star','url':'https://youtu.be/L8nvibD4v8s'},
+      {'title':'a_hisa - Snow Cloud','url':'https://youtu.be/X011NfAuKPU'},
+      {'title':'a_hisa - Snow Prism','url':'https://youtu.be/VRy2AXgzjSU'},
+      {'title':'a_hisa - Sunset Beach','url':'https://youtu.be/GCW5J8QEog4'},
+      {'title':'a_hisa - Synesthesia','url':'https://youtu.be/f2knacduZiI'},
+      {'title':'a_hisa - Whisper of Woods','url':'https://youtu.be/GOgiWglWi8g'},
+      {'title':'a_hisa - 水紋桜','url':'https://youtu.be/l9ckmrOmL74'},
+      {'title':'a_hisa - 時計の部屋と精神世界','url':'https://youtu.be/eIk-eunLbRE'},
+      {'title':'Adele vs Daft Punk *MASHUP* Something About The Fire','url':'https://youtu.be/72vYEc5floI'},
+      {'title':'Alex Newell & DJ Cassidy with Nile Rodgers - Kill The Lights','url':'https://youtu.be/Q1P612HLe9o'},
+      {'title':'An - Vividdness.PF - Profile (横顔)','url':'https://youtu.be/SpVMxHmDRkY'},
+      {'title':'Andromedik - Let Me In [NCS Release]','url':'https://youtu.be/DdISOatomY4'},
+      {'title':'Aran - Desktop Universe','url':'https://youtu.be/cTQBjm-2p7I'},
+      {'title':'Avicii - Fade into Darkness (SirensCeol Remix)','url':'https://youtu.be/0wl23Mg4Rxg'},
+      {'title':'Be Higher - Fortress 2 Blue Theme song','url':'https://youtu.be/uhbtSRbx0K0'},
+      {'title':'Black Coast - TRNDSTTR (Lucian Remix)','url':'https://youtu.be/r7Ve8ExE8YY'},
+      {'title':'Blackmill - Ellie Goulding - Your Song','url':'https://youtu.be/ScLVtsi0cfc'},
+      {'title':'Blackmill - Evil Beauty','url':'https://youtu.be/uAFjgpuWREM'},
+      {'title':'Blackmill - Feat. Veela - Let It Be','url':'https://youtu.be/sDI6HTR9arA'},
+      {'title':'Blackmill - Friend','url':'https://youtu.be/0zG_lckuzbo'},
+      {'title':'Blackmill - Lucid Truth','url':'https://youtu.be/VFzsSbdS7Sk'},
+      {'title':'Blackmill - Miracle','url':'https://youtu.be/wXVQNSlFJ6M'},
+      {'title':'Blackmill - Rain','url':'https://youtu.be/OqYCwK4BZK0'},
+      {'title':'Blackmill - Spirit of Life','url':'https://youtu.be/YeaGUfZM5hs'},
+      {'title':'Blackmill - The Drift','url':'https://youtu.be/-xA84aIAWEk'},
+      {'title':'BLU J x INDIGINIS - Hallucinating ft. Molly Moore','url':'https://youtu.be/6bh5yf44xMc'},
+      {'title':'Bobby Brown - Every Little Step (CJ\'s 7&quot; Mix)','url':'https://youtu.be/knyr3y1mLL8'},
+      {'title':'Catch Me - Pockets','url':'https://youtu.be/QALH4LQcdWY'},
+      {'title':'Charlie Puth - We Don\'t Talk Anymore ft. Selena Gomez (Mr. Collipark Remix)','url':'https://youtu.be/kubR2nx8sF0'},
+      {'title':'CHIC feat. NILE RODGERS - Back In The Old School (12\'\' Single Vocal Extended) 2015','url':'https://youtu.be/FkdH6OHkdNw'},
+      {'title':'Childish Gambino - Redbone','url':'https://youtu.be/Kp7eSUU9oy8'},
+      {'title':'Clean Bandit - Rockabye ft. Sean Paul & Anne-Marie (SHAKED Remix)','url':'https://youtu.be/mIUKGKwBRk8'},
+      {'title':'Craig David & Sigala - Ain\'t Giving Up','url':'https://youtu.be/FC9fc12YYC4'},
+      {'title':'Craig David - Insomnia','url':'https://youtu.be/tnrTN7s-p6Y'},
+      {'title':'Darwin & Defekt - The Anthem (ft. Jeston Langland)','url':'https://youtu.be/LhvJHwErHtA'},
+      {'title':'David Guetta - Play Hard ft. Ne-Yo, Akon','url':'https://youtu.be/5dbEhBKGOtY'},
+      {'title':'Dax Riders - You are the sunshine of my life','url':'https://youtu.be/Ro5aBePAYlE'},
+      {'title':'DDRKirby(ISQ) - Ripple Runner','url':'https://youtu.be/SkEKKoZapWg?list=PL60CnXi9EAVH3LgbCmcERCXr0_HPKHHEo'},
+      {'title':'DDRKirby(ISQ) - Set Me Free','url':'https://youtu.be/A1zEhGCB38w?list=PL60CnXi9EAVH3LgbCmcERCXr0_HPKHHEo'},
+      {'title':'DDRKirby(ISQ) - Take It to the Limit','url':'https://youtu.be/tYOFk4jwoRI?list=PL60CnXi9EAVH3LgbCmcERCXr0_HPKHHEo'},
+      {'title':'DDRKirby(ISQ) - Watching the Tide','url':'https://youtu.be/5Lfj1lx68L8?list=PL60CnXi9EAVH3LgbCmcERCXr0_HPKHHEo'},
+      {'title':'DDRKirby(ISQ) - What Lies Beneath','url':'https://youtu.be/AFcqzWJOUl4?list=PL60CnXi9EAVH3LgbCmcERCXr0_HPKHHEo'},
+      {'title':'DJ Khaled - Hold You Down ft. Chris Brown, August Alsina, Future, Jeremih','url':'https://youtu.be/Ow98FjS_TFg'},
+      {'title':'DJ Snake, Zedd - Let Me Love You (Audio/Zedd Remix) ft. Justin Bieber','url':'https://youtu.be/6nkj65NwpKg'},
+      {'title':'Do it','url':'https://youtu.be/lsV1IKawYy8'},
+      {'title':'Dogg Master - I´m Ready','url':'https://youtu.be/ySMmZUCZMRw'},
+      {'title':'Donna Summer - Bad Girls (Gigamesh Remix)','url':'https://youtu.be/Hh1AYSgpmsc'},
+      {'title':'Ed Sheeran - Shape Of You (BKAYE Remix)','url':'https://youtu.be/qK_NeRZOdq4'},
+      {'title':'Ellie Goulding - Burn (Hansel Thorn Remix)','url':'https://youtu.be/KaGMUtQo_5A'},
+      {'title':'Far East Movement - Like A G6 (Cahill Remix)','url':'https://youtu.be/_nuaHaKz150'},
+      {'title':'Far Out - On My Own (feat. Karra)','url':'https://youtu.be/ktw8hcSq2mc'},
+      {'title':'Feint - Drifters (feat. Elizaveta) [Monstercat Release]','url':'https://youtu.be/4jARV_XYfdk'},
+      {'title':'FKJ - Drops feat. Tom Bailey','url':'https://youtu.be/tayEofaRQIs'},
+      {'title':'G2R2014 - Altale','url':'https://youtu.be/ikr59Iplnlo'},
+      {'title':'Gallant - Weight In Gold','url':'https://youtu.be/p7qpwl0vHjo'},
+      {'title':'Gigo\'n\'Migo - Stand By You','url':'https://youtu.be/bIJCAtGwqjU'},
+      {'title':'Haywyre - Everchanging [Monstercat Release]','url':'https://youtu.be/c1hPCKKJDLQ'},
+      {'title':'HONNE - Warm On A Cold Night','url':'https://youtu.be/CX5f0NcqlMs'},
+      {'title':'Imagine Dragons - Bad Liar','url':'https://youtu.be/a40XLhSUREo'},
+      {'title':'Joystick (Vocal 12&quot;)','url':'https://youtu.be/Biodze21Lsk'},
+      {'title':'Lido & Canblaster - Alarm Clock','url':'https://youtu.be/_MXRV8lhBzA'},
+      {'title':'Lisa Miskovsky - Still Alive','url':'https://youtu.be/SzmUde_EK5Y'},
+      {'title':'Martin Solveig - The Night Out (Madeon Remix)','url':'https://youtu.be/5n-_9ZjwRC4'},
+      {'title':'Martin Solveig « +1 » (feat. Sam White)','url':'https://youtu.be/-uRi_xo92VE'},
+      {'title':'Matryoshka - Sacred play secret place','url':'https://youtu.be/zB8d-bH1lV4'},
+      {'title':'Matthias Pascal Jakob - High With You','url':'https://youtu.be/pQ2PJgR2g4k'},
+      {'title':'Mickey Valen - Wildcard (feat. Feli Ferraro)','url':'https://youtu.be/YfRLJQlpMNw'},
+      {'title':'Mind Vortex - Alive','url':'https://youtu.be/3CfxhOp0Y3Q'},
+      {'title':'Mutrix - Moments (Vena Cava & Zom B Remix)','url':'https://youtu.be/QKmprJ04O68'},
+      {'title':'New Hope Club - Medicine','url':'https://youtu.be/8WfFGy4NT-M'},
+      {'title':'Noah Cyrus - Make Me Cry (Marshmello Remix)','url':'https://youtu.be/GkmroNR5e8c'},
+      {'title':'Owl City - Verge ft. Aloe Blacc','url':'https://youtu.be/nYCURBSSyXw'},
+      {'title':'Patti LaBelle - Music Is My Way of Life (Joey Negro Funk In The Music Mix)','url':'https://youtu.be/hVf11mpdZ_8'},
+      {'title':'PLVTINUM - If You\'re Gonna Leave','url':'https://youtu.be/MKy9lM0RddA'},
+      {'title':'PYRMDPLAZA - Dragon','url':'https://youtu.be/EzfGc0ly-7A'},
+      {'title':'Rain Man & Krysta Youngs - Habit','url':'https://youtu.be/go0DG9W9Tzo'},
+      {'title':'Rameses B - Utopia (ft. Holly Drummond)','url':'https://youtu.be/5HlrDVZaqdo'},
+      {'title':'Rameses B - With You','url':'https://youtu.be/0Wtm9vTXsY8'},
+      {'title':'Rimshox - Mercy','url':'https://youtu.be/cgj1smjPJyM'},
+      {'title':'Roman Lob - Standing Still','url':'https://youtu.be/phrAE03-F_8'},
+      {'title':'Ruchir - Sleepless Ft. Emma Sameth','url':'https://youtu.be/J61HGZKk4JE'},
+      {'title':'Sakura Waltz (Otokaze Remix)','url':'https://youtu.be/Y01NjDimZLo'},
+      {'title':'Sakuzyo - Blank Note','url':'https://youtu.be/ECdcfApQG_A'},
+      {'title':'Sakuzyo - Graduation','url':'https://youtu.be/-W9OWHQk-hM'},
+      {'title':'Shirobon - Regain Control','url':'https://youtu.be/c2orBsXp4HM'},
+      {'title':'SizzleBird - Beautiful Star','url':'https://youtu.be/UJ7rPKngG4k'},
+      {'title':'SizzleBird - Mist (Feat. Bea)','url':'https://youtu.be/If0jFkZejBI'},
+      {'title':'Slander & Kayzo - Without You (feat. Dylan Matthew) [Monstercat Release]','url':'https://youtu.be/MYNJ5hoS0fw'},
+      {'title':'Slynk & Mr. Bill feat Timothy Wisdom - Get Into My Groove (Breaks)','url':'https://youtu.be/m50_j6RQTeY'},
+      {'title':'so nice - dax riders','url':'https://youtu.be/lTdYb5M5pas'},
+      {'title':'Sunstroke Project - Hey Mamma','url':'https://youtu.be/z1G-WvdxgbI'},
+      {'title':'SWAY - LEVEL UP feat. Kelsey (Blame Remix)','url':'https://youtu.be/k1UwdHd1ljE'},
+      {'title':'SwitchVilla - For the Groove','url':'https://youtu.be/X4O_aVAYpWQ'},
+      {'title':'SwitchVilla - The Great Divide - 04 Step On The Funk','url':'https://youtu.be/bpI64TRSZ1o'},
+      {'title':'The Chainsmokers & Coldplay - Something Just Like This (Lyric)','url':'https://youtu.be/FM7MFYoylVs'},
+      {'title':'The Chainsmokers - Closer (Lyric) ft. Halsey','url':'https://youtu.be/PT2_F-1esPk'},
+      {'title':'The Heavy - \'The Apology\'','url':'https://youtu.be/1V_SFrCNZC8'},
+      {'title':'The Eden Project - Lost','url':'https://youtu.be/ZMCP4xIsmAw'},
+      {'title':'The Kount - Contact!','url':'https://youtu.be/7BARQ-HbgA0'},
+      {'title':'The Royal - Dreamlife','url':'https://youtu.be/4OD8Gv4tvjQ'},
+      {'title':'There\'s Something About Supertank - Fortress 2 Blue Theme song','url':'https://youtu.be/M8VvGsmb4dU'},
+      {'title':'Thundercat - \'Oh Sheit It\'s X\'','url':'https://youtu.be/AsJfFL9OuA0'},
+      {'title':'Tiësto & KSHMR feat. Vassy - Secrets','url':'https://youtu.be/Dr1nN__-2Po'},
+      {'title':'Tris Day | Bones','url':'https://youtu.be/e967VF0HyLQ'},
+      {'title':'Troublemaker','url':'https://youtu.be/offvqocFb-E'},
+      {'title':'Tuxedo - Vibrations (Feat. Parisalexa) // Tuxedo III','url':'https://youtu.be/c1hgHNwHhWs'},
+      {'title':'TWO DOOR CINEMA CLUB | WHAT YOU KNOW','url':'https://youtu.be/YXwYJyrKK5A'},
+      {'title':'Two Ways - Tangled Strings','url':'https://youtu.be/OlVoLEOXgbs'},
+      {'title':'Uplink - Still Need You (feat. AWR) [NCS Release]','url':'https://youtu.be/gy9IbepHACk'},
+      {'title':'Usher - OMG ft. will.i.am','url':'https://youtu.be/1RnPB76mjxI'},
+      {'title':'Virtual Riot feat. Lisa Rowe - In Your Hands','url':'https://youtu.be/ahOhl-pGkeE'},
+      {'title':'Vonikk - Phoenix','url':'https://youtu.be/rL-GigGJJJQ'},
+      {'title':'Wake (Hillsong Young and Free)','url':'https://youtu.be/io2WOQ-3aVs'},
+      {'title':'Waterflame - Electroman Adventures','url':'https://youtu.be/Pb6KyewC_Vg'},
+      {'title':'Waterflame - Hexagon Force','url':'https://youtu.be/afwK743PL2Y'},
+      {'title':'Yamashita Tomohisa - Loveless - Instrumental','url':'https://youtu.be/xwe3a_lRrbY'},
+      {'title':'Zedd & Jasmine Thompson - Funny','url':'https://youtu.be/JzpxJcJwDZ0'},
+      {'title':'Zedd - Beautiful Now ft. Jon Bellion','url':'https://youtu.be/Sl2HeP8RlfU'},
+      {'title':'Zedd - Clarity ft. Foxes','url':'https://youtu.be/IxxstCcJlsc'},
+      {'title':'Zedd - Daisy ft. Julia Michaels','url':'https://youtu.be/CMNBjZBBKPw'},
+      {'title':'Zedd - Done With Love','url':'https://youtu.be/BjsjIkSb0cM'},
+      {'title':'Zedd - Find You ft. Matthew Koma & Miriam Bryant (TAK Remix)','url':'https://youtu.be/fgrr9Mp-5wE'},
+      {'title':'Zedd - I Want You To Know ft. Selena Gomez','url':'https://youtu.be/67qworViFpY'},
+      {'title':'Zedd - Papercut (Audio) ft. Troye Sivan','url':'https://youtu.be/HwtljkGZJnI'},
+      {'title':'Zedd - Push Play (Audio) ft. Miriam Bryant','url':'https://youtu.be/dba3MYL6Nzcdba3MYL6Nzc'},
+      {'title':'Zedd - Spectrum ft. Matthew Koma','url':'https://youtu.be/wEp9MCQlAa4'},
+      {'title':'Zedd - Stay The Night ft. Hayley Williams','url':'https://youtu.be/i-gyZ35074k'},
+      {'title':'Zedd, Alessia Cara - Stay','url':'https://youtu.be/h--P8HzYZ74'},
+      {'title':'Zedd, Griff - Inside Out','url':'https://youtu.be/ZTwXOn3qZBc'},
+      {'title':'Zedd, Liam Payne - Get Low','url':'https://youtu.be/cSX0-MP6tjw'},
+      {'title':'글랜체크 60`s Cardin','url':'https://youtu.be/br1jMFx6Qz0'},
+      ]}"></script>
+    <!-- SCM Music Player script end -->
+  </body>
+</html>

@@ -1,0 +1,4 @@
+# The things that should be noted when update or modify scm-music-player
+
+1. HTTPS configuration
+2. 'z-index' CSS configuration of 'div#playerW'

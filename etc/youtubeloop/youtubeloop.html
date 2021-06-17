@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>유튜브 반복 재생기 - Unchun Yang's Website</title>
+
+    <meta name="description" content="유튜브 반복 재생기 - Unchun Yang's Website" />
+    <link rel="canonical" href="https://ucyang.com/etc/youtubeloop/youtubeloop.html" />
+
+    <meta property="og:title" content="유튜브 반복 재생기 - Unchun Yang's Website" />
+    <meta property="og:description" content="유튜브 반복 재생기 - Unchun Yang's Website" />
+    <meta property="og:url" content="https://ucyang.com/etc/youtubeloop/youtubeloop.html" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:height" content="268" />
+    <meta property="og:image:width" content="512" />
+
+    <meta name="theme-color" content="#dff6ff" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+
+    <style>
+      div#jumbo {
+        color: #084670;
+        background: #dff6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="jumbo" class="jumbotron text-center">
+        <h1>유튜브 반복 재생기</h1>
+        <hr />
+        <p>
+          <a href="https://ucyang.com/">Unchun Yang's Website (https://ucyang.com/)</a>
+          <br />
+          <a href="mailto:ucyang@ucyang.com">ucyang@ucyang.com</a>
+          <br />
+          by Unchun Yang
+        </p>
+      </div>
+
+      <div class="alert alert-info" style="text-align: center">
+        <strong>사용법</strong>
+        <hr />
+        <b>1.</b> 반복 재생하고자 하는
+        유튜브 영상의 주소를 입력해주세요.<br />
+        <b>2.</b> '반복 재생' 버튼을 클릭하시면
+        영상이 반복 재생됩니다.<br />
+      </div>
+
+      <input id="url" class="form-control text-center"
+        type="url" style="padding: 0"
+        placeholder="https://www.youtube.com/watch?v=~ 또는 https://youtu.be/~" />
+      <button id="play-loop"
+        class="btn btn-default btn-block" type="button">
+        반복 재생
+      </button>
+
+      <hr />
+
+      <div id="well" class="well" style="display: none">
+        <iframe id="video" class="center-block" src=""
+          frameborder="0" style="max-width: 100%; width: 560px; height: 315px"
+          allowfullscreen="allowfullscreen"></iframe>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <script>
+      "use strict";
+
+      $(document).ready(function() {
+        $("input#url").keydown(function(event) {
+          if (event.keyCode === 13)
+            $("button#play-loop").click();
+        });
+
+        $("button#play-loop").click(function() {
+          var youtubeId = $("input#url").val().match(/(\?v=|be\/)[^&]+/);
+
+          if (!youtubeId) {
+            alert("정상적인 유튜브 영상 주소를 입력해주세요.");
+            return;
+          }
+
+          youtubeId = youtubeId[0].replace(youtubeId[1], "");
+
+          $("iframe#video").attr("src",
+            "https://www.youtube.com/embed/" + youtubeId
+            + "?version=3&loop=1&playlist=" + youtubeId);
+          $("div#well").css("display", "block");
+        });
+      });
+    </script>
+  </body>
+</html>

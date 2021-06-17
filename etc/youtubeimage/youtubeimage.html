@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>유튜브 이미지 생성기 - Unchun Yang's Website</title>
+
+    <meta name="description" content="유튜브 이미지 생성기 - Unchun Yang's Website" />
+    <link rel="canonical" href="https://ucyang.com/etc/youtubeimage/youtubeimage.html" />
+
+    <meta property="og:title" content="유튜브 이미지 생성기 - Unchun Yang's Website" />
+    <meta property="og:description" content="유튜브 이미지 생성기 - Unchun Yang's Website" />
+    <meta property="og:url" content="https://ucyang.com/etc/youtubeimage/youtubeimage.html" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:height" content="268" />
+    <meta property="og:image:width" content="512" />
+
+    <meta name="theme-color" content="#dff6ff" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+
+    <style>
+      div#jumbo {
+        color: #084670;
+        background: #dff6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="jumbo" class="jumbotron text-center">
+        <h1>유튜브 이미지 생성기</h1>
+        <hr />
+        <p>
+          <a href="https://ucyang.com/">Unchun Yang's Website (https://ucyang.com/)</a>
+          <br />
+          <a href="mailto:ucyang@ucyang.com">ucyang@ucyang.com</a>
+          <br />
+          by Unchun Yang
+        </p>
+      </div>
+
+      <div class="alert alert-info" style="text-align: center">
+        <strong>사용법</strong>
+        <hr />
+        <b>1.</b> 표지 이미지를 찾고자 하는 유튜브 영상의 주소를 입력해주세요.<br />
+        <b>2.</b> '이미지 생성' 버튼을 클릭하시면 이미지가 생성됩니다.<br />
+        <b>3.</b> 이제 생성된 이미지를 저장 또는 복사 후 필요한 곳에 사용하시면 됩니다.
+      </div>
+
+      <input id="url" class="form-control text-center"
+        type="url" style="padding: 0"
+        placeholder="https://www.youtube.com/watch?v=~ 또는 https://youtu.be/~" />
+      <button id="get-image" class="btn btn-default btn-block" type="button">이미지 생성</button>
+
+      <hr />
+
+      <div id="well" class="well" style="display: none">
+        <img id="image" class="img-responsive center-block" alt="유튜브 이미지" style="width: 480px; height: 360px" />
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <script>
+      "use strict";
+
+      $(document).ready(function() {
+        $("input#url").keydown(function(event) {
+          if (event.keyCode === 13)
+            $("button#get-image").click();
+        });
+
+        $("button#get-image").click(function() {
+          var url = $("input#url").val();
+          var idx;
+          var youtubeId;
+
+          idx = url.indexOf("?v=");
+          if (idx == -1) {
+            idx = url.indexOf("be/");
+            if (idx == -1) {
+              alert("정상적인 유튜브 영상 주소를 입력해주세요.");
+              return;
+            }
+          }
+          youtubeId = url.slice(idx + 3);
+
+          $("img#image").attr("src", "https://i.ytimg.com/vi/"
+            + youtubeId + "/hqdefault.jpg");
+          $("div#well").css("display", "block");
+        });
+      });
+    </script>
+  </body>
+</html>

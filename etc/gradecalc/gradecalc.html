@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>내신 산출기 - Unchun Yang's Website</title>
+
+    <meta name="description" content="내신 산출기 - Unchun Yang's Website" />
+    <link rel="canonical" href="https://ucyang.com/etc/gradecalc/gradecalc.html" />
+
+    <meta property="og:title" content="내신 산출기 - Unchun Yang's Website" />
+    <meta property="og:description" content="내신 산출기 - Unchun Yang's Website" />
+    <meta property="og:url" content="https://ucyang.com/etc/gradecalc/gradecalc.html" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:height" content="268" />
+    <meta property="og:image:width" content="512" />
+
+    <meta name="theme-color" content="#dff6ff" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+
+    <style>
+      div#jumbo {
+        color: #084670;
+        background: #dff6ff;
+      }
+
+      th {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="jumbo" class="jumbotron text-center">
+        <h1>내신 산출기</h1>
+        <hr />
+        <p>
+          <a href="https://ucyang.com/">Unchun Yang's Website (https://ucyang.com/)</a>
+          <br />
+          <a href="mailto:ucyang@ucyang.com">ucyang@ucyang.com</a>
+          <br />
+          by Unchun Yang
+        </p>
+        <hr />
+        <div class="alert alert-info">
+          <strong>Tip!</strong>
+          표의 제목 중 파란 글씨에 마우스를 올리면 도움말을 볼 수 있습니다.
+          모바일에서는 파란 글씨를 터치해주세요.
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-condensed">
+          <thead>
+            <tr>
+              <th>과목</th>
+              <th>석차</th>
+              <th>
+                <a href="#" data-toggle="tooltip"
+                  title="본인을 포함하여 같은 석차의 학생 수를 적어주세요.">
+                  동석차
+                </a>
+              </th>
+              <th>
+                <a href="#" data-toggle="tooltip"
+                  title="각 과목을 몇 명의 학생이 배웠는지 적어주세요.">
+                  이수자
+                </a>
+              </th>
+              <th>
+                <a href="#" data-toggle="tooltip"
+                  title="한 주에 몇 시간의 수업이 있는지 적어주세요.">
+                  단위
+                </a>
+              </th>
+              <th>등급</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-subjects">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-condensed">
+          <thead id="thead-percentage">
+          </thead>
+          <tbody id="tbody-percentage">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="average-grade" class="alert alert-success"></div>
+
+      <div class="btn-group btn-group-justified">
+        <div class="btn-group">
+          <button id="add-subject" class="btn btn-info" type="button">
+            <span class="glyphicon glyphicon-plus"></span> 과목 추가
+          </button>
+        </div>
+        <div class="btn-group">
+          <button id="calc" class="btn btn-success" type="button">
+            <span class="glyphicon glyphicon-ok"></span> 내신 산출
+          </button>
+        </div>
+      </div>
+
+      <hr />
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <script src="gradecalc.min.js"></script>
+  </body>
+</html>

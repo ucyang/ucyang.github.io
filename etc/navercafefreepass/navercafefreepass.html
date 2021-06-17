@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Naver Cafe Free Pass - Unchun Yang's Website</title>
+
+    <meta name="description" content="Naver Cafe Free Pass - Unchun Yang's Website" />
+    <link rel="canonical" href="https://ucyang.com/etc/navercafefreepass/navercafefreepass.html" />
+
+    <meta property="og:title" content="Naver Cafe Free Pass - Unchun Yang's Website" />
+    <meta property="og:description" content="Naver Cafe Free Pass - Unchun Yang's Website" />
+    <meta property="og:url" content="https://ucyang.com/etc/navercafefreepass/navercafefreepass.html" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:height" content="268" />
+    <meta property="og:image:width" content="512" />
+
+    <meta name="theme-color" content="#00c43b" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+
+    <style>
+      div#jumbo {
+        color: #084670;
+        background: #dff6ff;
+      }
+
+      h1#title {
+        color: #3fc628;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="jumbo" class="jumbotron text-center">
+        <h1 id="title">Naver Cafe Free Pass</h1>
+        <hr />
+        <p>
+          <a href="https://ucyang.com/">Unchun Yang's Website (https://ucyang.com/)</a>
+          <br />
+          <a href="mailto:ucyang@ucyang.com">ucyang@ucyang.com</a>
+          <br />
+          by Unchun Yang
+        </p>
+      </div>
+
+      <div class="alert alert-info" style="text-align: center">
+        <strong>소개</strong>
+        <hr />
+        네이버 카페에는 <strong>비회원도 네이버 검색을 통해 볼 수 있는 글</strong>이 많습니다.
+        <br />
+        그러한 글들은 네이버 검색을 거쳐 접근하거나 카페에 가입해야만 내용을 확인할 수 있으며 그 외의 방식은 차단됩니다.
+        <br />
+        그러나 <strong>접근이 차단되어 글을 볼 수 없는 경우에도</strong> 아래에 카페 게시글의 주소를 입력하시면 <strong>내용을 확인할 수 있습니다.</strong>
+      </div>
+
+      <div class="alert alert-info" style="text-align: center">
+        <strong>사용법</strong>
+        <hr />
+        <strong>방법 1:</strong> 게시글을 우클릭하여 <strong>새 탭에서 연 후</strong> 주소를 아래에 입력합니다.
+        <br />
+        <strong>또는</strong>
+        <br />
+        <strong>방법 2:</strong> 'https://cafe.naver.com<strong>/카페이름/글번호</strong>' 형식의 주소를 입력합니다.
+      </div>
+
+      <div class="alert alert-warning" style="text-align: center">
+        <strong>주의사항</strong>
+        <hr />
+        <b>1</b>
+        <br />
+        네이버에서 <strong>검색되는 것을 허락한 게시글</strong>에만 동작합니다.
+        <br />
+        단, 글 작성자가 별도로 설정하지 않은 <strong>대부분은 기본적으로 검색이 허용</strong>되어 있습니다.
+        <br />
+        <br />
+        <b>2</b>
+        <br />
+        반드시 카페 <strong>게시글의 주소</strong>를 입력하셔야 동작합니다.
+        <br />
+        즉, 'https://cafe.naver.com<strong>/카페이름/글번호</strong>' <strong>또는</strong> 'https://cafe.naver.com<strong>/카페이름?~articleid=글번호~</strong>' <strong>형식으로 입력</strong>하셔야 합니다.
+        <br />
+        <br />
+        <b>3</b>
+        <br />
+        <strong>모바일은 지원하지 않습니다.</strong>
+      </div>
+
+      <input id="url" class="form-control text-center"
+        type="url" style="padding: 0"
+        placeholder="'https://cafe.naver.com/카페이름/글번호' 또는 'https://cafe.naver.com/카페이름?~articleid=글번호~'" />
+      <button id="open-page"
+        class="btn btn-default btn-block" type="button">
+        페이지 열기
+      </button>
+
+      <hr />
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <script>
+      "use strict";
+
+      function getLocation(href) {
+        var l = document.createElement("a");
+        l.href = href;
+        return l;
+      };
+
+      function isShortCafeAddress(href) {
+        var url = getLocation(href);
+        return /\/\d+$/.test(url.pathname);
+      }
+
+      function getShortAddressFromNewTab(href) {
+        var url;
+        var cafeName, articleId;
+
+        if (isShortCafeAddress(href))
+          return null;
+
+        url = getLocation(href);
+        
+        cafeName = url.pathname.match(/\/[^./]+\/?$/i);
+        if (!cafeName)
+          return null;
+        cafeName = cafeName[0].replace(/\//g, "");
+        
+        articleId = url.search.match(/articleid=\d+/i);
+        if (!articleId)
+          return null;
+        articleId = articleId[0].replace(/\D+/, "");
+        
+        return "https://cafe.naver.com/" + cafeName + "/" + articleId;
+      }
+
+      $(document).ready(function() {
+        $("input#url").keydown(function(event) {
+          if (event.keyCode === 13)
+            $("button#open-page").click();
+        });
+
+        $("button#open-page").click(function() {
+          var url = $("input#url").val();
+          var newURL;
+
+          newURL = getShortAddressFromNewTab(url);
+          if (newURL)
+            url = newURL;
+          else if (!isShortCafeAddress(url)) {
+            alert("정상적인 카페 게시글 주소를 입력해주세요.");
+            return;
+          }
+
+          window.open("http://search.naver.com/search.naver?url="
+            + encodeURIComponent(url));
+        });
+      });
+    </script>
+  </body>
+</html>
