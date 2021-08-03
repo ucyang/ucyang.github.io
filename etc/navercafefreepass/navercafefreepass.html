@@ -59,24 +59,30 @@
         </p>
       </div>
 
-      <div class="alert alert-info" style="text-align: center">
-        <strong>소개</strong>
+      <div class="well" style="text-align: center">
+        <strong>네이버/다음 카페 게시글 읽기 차단 우회</strong>
         <hr />
-        네이버 카페에는 <strong>비회원도 네이버 검색을 통해 볼 수 있는 글</strong>이 많습니다.
+        네이버/다음 카페에는 <strong>비회원도 네이버/다음 검색을 통해 볼 수 있는 글</strong>이 많습니다.
         <br />
-        그러한 글들은 네이버 검색을 거쳐 접근하거나 카페에 가입해야만 내용을 확인할 수 있으며 그 외의 방식은 차단됩니다.
+        그러한 글들은 네이버/다음 검색을 거쳐 접근하거나 카페에 가입해야만 내용을 확인할 수 있으며 그 외의 방식은 차단됩니다.
         <br />
         그러나 <strong>접근이 차단되어 글을 볼 수 없는 경우에도</strong> 아래에 카페 게시글의 주소를 입력하시면 <strong>내용을 확인할 수 있습니다.</strong>
       </div>
 
-      <div class="alert alert-info" style="text-align: center">
-        <strong>사용법</strong>
+      <div class="alert alert-success" style="text-align: center">
+        <strong>네이버 카페</strong>
         <hr />
-        <strong>방법 1:</strong> 게시글을 우클릭하여 <strong>새 탭에서 연 후</strong> 주소를 아래에 입력합니다.
+        <strong>방법 1:</strong> 'https://cafe.naver.com<strong>/카페명/글번호</strong>' 형식의 주소를 입력합니다.
         <br />
         <strong>또는</strong>
         <br />
-        <strong>방법 2:</strong> 'https://cafe.naver.com<strong>/카페이름/글번호</strong>' 형식의 주소를 입력합니다.
+        <strong>방법 2:</strong> 게시글을 우클릭하여 <strong>새 탭에서 연 후</strong> 주소를 아래에 입력합니다.
+      </div>
+
+      <div class="alert alert-info" style="text-align: center">
+        <strong>다음 카페</strong>
+        <hr />
+        <strong>방법:</strong> 'https://cafe.daum.net<strong>/카페명/게시판명/글번호</strong>' 형식의 주소를 입력합니다.
       </div>
 
       <div class="alert alert-warning" style="text-align: center">
@@ -84,30 +90,23 @@
         <hr />
         <b>1</b>
         <br />
-        네이버에서 <strong>검색되는 것을 허락한 게시글</strong>에만 동작합니다.
+        네이버/다음에서 <strong>검색되는 것을 허락한 게시글</strong>에만 동작합니다.
         <br />
         단, 글 작성자가 별도로 설정하지 않은 <strong>대부분은 기본적으로 검색이 허용</strong>되어 있습니다.
         <br />
         <br />
         <b>2</b>
         <br />
-        반드시 카페 <strong>게시글의 주소</strong>를 입력하셔야 동작합니다.
-        <br />
-        즉, 'https://cafe.naver.com<strong>/카페이름/글번호</strong>' <strong>또는</strong> 'https://cafe.naver.com<strong>/카페이름?~articleid=글번호~</strong>' <strong>형식으로 입력</strong>하셔야 합니다.
+        반드시 카페 <strong>게시글의 주소</strong>를 <strong>안내된 방법</strong>으로 입력하셔야 동작합니다.
         <br />
         <br />
         <b>3</b>
         <br />
-        <strong>모바일은 지원하지 않습니다.</strong>
+        현재 <strong>크롬</strong> 이외의 브라우저와 <strong>모바일</strong> 환경은 공식적으로 <strong>지원하지 않습니다.</strong>
       </div>
 
-      <input id="url" class="form-control text-center"
-        type="url" style="padding: 0"
-        placeholder="'https://cafe.naver.com/카페이름/글번호' 또는 'https://cafe.naver.com/카페이름?~articleid=글번호~'" />
-      <button id="open-page"
-        class="btn btn-default btn-block" type="button">
-        페이지 열기
-      </button>
+      <input id="url" class="form-control text-center" type="url" style="padding: 0" placeholder="네이버/다음 카페 게시글 주소" />
+      <button id="open-page" class="btn btn-default btn-block" type="button">페이지 열기</button>
 
       <hr />
     </div>
@@ -122,33 +121,65 @@
         var l = document.createElement("a");
         l.href = href;
         return l;
-      };
+      }
+
+      function getArticleId(href) {
+        var url = getLocation(href);
+
+        var articleidFullPattern = /articleid(=|%3D)\d+/i;
+        var articleidNamePattern = /articleid(=|%3D)/i;
+
+        var articleid = url.search.match(articleidFullPattern);
+
+        if (articleid)
+          return articleid[0].replace(articleidNamePattern, "");
+        else
+          return articleid;
+      }
+
+      function getCafeName(href) {
+        var url = getLocation(href);
+
+        var cafeNamePattern = /[^\/\?\.]+/;
+        var cafeName = url.pathname.match(cafeNamePattern);
+
+        if (cafeName)
+          return cafeName[0];
+        else
+          return cafeName;
+      }
 
       function isShortCafeAddress(href) {
         var url = getLocation(href);
         return /\/\d+$/.test(url.pathname);
       }
 
-      function getShortAddressFromNewTab(href) {
-        var url;
-        var cafeName, articleId;
+      function isStaffAddress(href) {
+        return /StaffArticleRead\.nhn/i.test(href);
+      }
 
+      function getShortCafeAddress(cafeName, articleid, staffOnly) {
+        return "https://cafe.naver.com/" + cafeName + (staffOnly ? "/staff" : "") + "/" + articleid;
+      }
+
+      function getShortCafeAddressFromNewTab(href) {
         if (isShortCafeAddress(href))
           return null;
 
-        url = getLocation(href);
-        
-        cafeName = url.pathname.match(/\/[^./]+\/?$/i);
-        if (!cafeName)
-          return null;
-        cafeName = cafeName[0].replace(/\//g, "");
-        
-        articleId = url.search.match(/articleid=\d+/i);
-        if (!articleId)
-          return null;
-        articleId = articleId[0].replace(/\D+/, "");
-        
-        return "https://cafe.naver.com/" + cafeName + "/" + articleId;
+        var articleid = getArticleId(href);
+        if (articleid) {
+          var cafeName = getCafeName(href);
+          if (cafeName && cafeName !== "undefined") {
+            var staffOnly = isStaffAddress(href);
+            return getShortCafeAddress(cafeName, articleid, staffOnly);
+          }
+        }
+
+        return null;
+      }
+
+      function alertInputError() {
+        alert("정상적인 카페 게시글 주소를 입력해주세요.");
       }
 
       $(document).ready(function() {
@@ -158,19 +189,27 @@
         });
 
         $("button#open-page").click(function() {
-          var url = $("input#url").val();
-          var newURL;
+          var url = getLocation($("input#url").val());
 
-          newURL = getShortAddressFromNewTab(url);
-          if (newURL)
-            url = newURL;
-          else if (!isShortCafeAddress(url)) {
-            alert("정상적인 카페 게시글 주소를 입력해주세요.");
-            return;
-          }
-
-          window.open("http://search.naver.com/search.naver?url="
-            + encodeURIComponent(url));
+          if (/naver\.com/i.test(url.hostname)) {
+            if (!isShortCafeAddress(url.href)) {
+              var newURL = getShortCafeAddressFromNewTab(url.href);
+              if (newURL)
+                url = getLocation(newURL);
+              else {
+                alertInputError();
+                return;
+              }
+            }
+            window.open("http://search.naver.com/search.naver?url="
+              + encodeURIComponent(url.href));
+          } else if (/daum\.net/i.test(url.hostname))
+            if (isShortCafeAddress(url.href) && !/q(=|%3D)/i.test(url.search))
+              window.open(url.href + (url.search ? "&" : "?") + "q=t");
+            else
+              alertInputError();
+          else
+            alertInputError();
         });
       });
     </script>
