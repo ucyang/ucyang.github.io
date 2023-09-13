@@ -201,7 +201,7 @@
                 return;
               }
             }
-            window.open("http://search.naver.com/search.naver?url="
+            window.open("https://search.naver.com/p/crd/rd?u="
               + encodeURIComponent(url.href));
           } else if (/daum\.net/i.test(url.hostname))
             if (isShortCafeAddress(url.href) && !/q(=|%3D)/i.test(url.search))
