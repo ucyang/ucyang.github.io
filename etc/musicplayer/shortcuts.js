@@ -9,11 +9,11 @@ var repeatMode = 1;
 
 var shuffle = true;
 
-$(document).ready(function() {
-  $(document).keydown(function(e) {
-    switch (e.keyCode) {
+document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("keydown", function(e) {
+    switch (e.key) {
     // Spacebar
-    case 32:
+    case " ":
       if (playing)
         SCM.pause();
       else
@@ -21,25 +21,26 @@ $(document).ready(function() {
       playing = !playing;
       break;
     // Left arrow
-    case 37:
+    case "ArrowLeft":
       SCM.previous();
       break;
     // Right arrow
-    case 39:
+    case "ArrowRight":
       SCM.next();
       break;
     // Up arrow
-    case 38:
+    case "ArrowUp":
       volume = Math.min(100, volume + deltaVolume);
       SCM.volume(volume);
       break;
     // Down arrow
-    case 40:
+    case "ArrowDown":
       volume = Math.max(0, volume - deltaVolume);
       SCM.volume(volume);
       break;
     // 'R' key
-    case 82:
+    case "r":
+    case "R":
       switch(repeatMode) {
       case 1:
         repeatMode = 2;
@@ -54,7 +55,8 @@ $(document).ready(function() {
       }
       break;
     // 'S' key
-    case 83:
+    case "s":
+    case "S":
       shuffle = !shuffle;
       SCM.isShuffle(shuffle);
       alert("이제 목록의 음악들이 "

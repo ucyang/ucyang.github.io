@@ -9,7 +9,7 @@ function isMobile() {
   return checkMobileString(arg);
 }
 
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   if (isMobile())
-    $("div#info-mobile").css("display", "block");
+    document.getElementById("info-mobile").style.display = "block";
 });
