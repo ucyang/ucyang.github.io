@@ -45,12 +45,12 @@ document.addEventListener("DOMContentLoaded", function() {
       case 1:
         repeatMode = 2;
         SCM.repeatMode(repeatMode);
-        alert("이제 한 곡만 반복적으로 들려드립니다.");
+        alert("Now repeating the current song.");
         break;
       case 2:
         repeatMode = 1;
         SCM.repeatMode(repeatMode);
-        alert("이제 목록을 재생합니다.");
+        alert("Now playing the list.");
         break;
       }
       break;
@@ -59,9 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
     case "S":
       shuffle = !shuffle;
       SCM.isShuffle(shuffle);
-      alert("이제 목록의 음악들이 "
-        + (shuffle ? "무작위로" : "순서대로")
-        +  " 재생됩니다.");
+      alert("Now the playlist will be played "
+        + (shuffle ? "randomly." : "in order."));
       break;
     }
   });
